@@ -1,0 +1,432 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 500px;
+    width: 100%;
+}
+
+/* Digital Clock/Time Display */
+#Box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#Box .item {
+    background: #2c3e50;
+    color: #ecf0f1;
+    padding: 15px 20px;
+    border-radius: 10px;
+    font-size: 2rem;
+    font-weight: bold;
+    min-width: 70px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3);
+}
+
+#Box p {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2c3e50;
+    animation: blink 2s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0.3; }
+}
+
+/* Calendar Container */
+.calender {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
+    padding: 30px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Month Header */
+.month {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding: 0 10px;
+}
+
+.month h2 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.fulldate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+    color: #7f8c8d;
+}
+
+.fulldate p {
+    margin: 0;
+}
+
+/* Navigation Arrows */
+.prev, .next {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.prev:hover, .next:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+    background: linear-gradient(135deg, #2980b9, #3498db);
+}
+
+.prev span, .next span {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Weekdays Header */
+.weekends {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+.weekends div {
+    text-align: center;
+    padding: 12px 5px;
+    font-weight: 600;
+    color: #34495e;
+    background: linear-gradient(135deg, #ecf0f1, #bdc3c7);
+    border-radius: 10px;
+    font-size: 0.9rem;
+}
+
+/* Calendar Days Grid */
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+}
+
+.days div {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    font-size: 1rem;
+}
+
+/* Regular Days */
+.days div:not(.prevdate):not(.today):not(.nextdate) {
+    background: #f8f9fa;
+    color: #2c3e50;
+    border: 2px solid transparent;
+}
+
+.days div:not(.prevdate):not(.today):not(.nextdate):hover {
+    background: linear-gradient(135deg, #74b9ff, #0984e3);
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(116, 185, 255, 0.4);
+}
+
+/* Previous/Next Month Dates */
+.prevdate, .nextdate {
+    background: #ecf0f1;
+    color: #95a5a6;
+    opacity: 0.6;
+}
+
+.prevdate:hover, .nextdate:hover {
+    background: #d5dbdb;
+    opacity: 0.8;
+}
+
+/* Today's Date */
+.today {
+    background: linear-gradient(135deg, #e17055, #d63031) !important;
+    color: white !important;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(225, 112, 85, 0.4);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.today:hover {
+    transform: scale(1.08) !important;
+    box-shadow: 0 6px 20px rgba(225, 112, 85, 0.6) !important;
+}
+
+/* Responsive Design */
+
+/* Tablets */
+@media (max-width: 768px) {
+    .wrapper {
+        gap: 20px;
+        max-width: 400px;
+    }
+    
+    .calender {
+        padding: 20px;
+    }
+    
+    .month h2 {
+        font-size: 1.5rem;
+    }
+    
+    #Box .item {
+        font-size: 1.5rem;
+        padding: 12px 15px;
+        min-width: 60px;
+    }
+    
+    #Box p {
+        font-size: 1.5rem;
+    }
+    
+    .prev, .next {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .weekends div {
+        padding: 10px 3px;
+        font-size: 0.8rem;
+    }
+    
+    .days {
+        gap: 6px;
+    }
+    
+    .days div {
+        font-size: 0.9rem;
+    }
+}
+
+/* Mobile Phones */
+@media (max-width: 480px) {
+    body {
+        padding: 15px;
+    }
+    
+    .wrapper {
+        gap: 15px;
+        max-width: 320px;
+    }
+    
+    .calender {
+        padding: 15px;
+        border-radius: 20px;
+    }
+    
+    .month {
+        margin-bottom: 20px;
+    }
+    
+    .month h2 {
+        font-size: 1.3rem;
+    }
+    
+    .fulldate {
+        font-size: 0.9rem;
+    }
+    
+    #Box {
+        padding: 15px;
+        gap: 10px;
+    }
+    
+    #Box .item {
+        font-size: 1.2rem;
+        padding: 10px 12px;
+        min-width: 50px;
+    }
+    
+    #Box p {
+        font-size: 1.2rem;
+    }
+    
+    .prev, .next {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .prev span, .next span {
+        font-size: 1rem;
+    }
+    
+    .weekends div {
+        padding: 8px 2px;
+        font-size: 0.75rem;
+    }
+    
+    .days {
+        gap: 4px;
+    }
+    
+    .days div {
+        font-size: 0.8rem;
+    }
+}
+
+/* Very Small Screens */
+@media (max-width: 320px) {
+    .wrapper {
+        max-width: 280px;
+    }
+    
+    .calender {
+        padding: 12px;
+    }
+    
+    .month h2 {
+        font-size: 1.1rem;
+    }
+    
+    #Box .item {
+        font-size: 1rem;
+        padding: 8px 10px;
+        min-width: 45px;
+    }
+    
+    #Box p {
+        font-size: 1rem;
+    }
+    
+    .weekends div {
+        font-size: 0.7rem;
+        padding: 6px 1px;
+    }
+    
+    .days div {
+        font-size: 0.75rem;
+    }
+    
+    .days {
+        gap: 3px;
+    }
+}
+
+/* Landscape Orientation for Mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    body {
+        padding: 10px;
+    }
+    
+    .wrapper {
+        flex-direction: row;
+        gap: 20px;
+        max-width: 100%;
+        align-items: flex-start;
+    }
+    
+    #Box {
+        flex-direction: column;
+        min-width: 120px;
+    }
+    
+    .calender {
+        flex: 1;
+        max-width: 400px;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    }
+    
+    .calender {
+        background: rgba(44, 62, 80, 0.95);
+        color: #ecf0f1;
+    }
+    
+    .month h2 {
+        color: #ecf0f1;
+    }
+    
+    .fulldate {
+        color: #bdc3c7;
+    }
+    
+    .weekends div {
+        background: linear-gradient(135deg, #34495e, #2c3e50);
+        color: #ecf0f1;
+    }
+    
+    .days div:not(.prevdate):not(.today):not(.nextdate) {
+        background: #2c3e50;
+        color: #ecf0f1;
+    }
+    
+    .prevdate, .nextdate {
+        background: #34495e;
+        color: #7f8c8d;
+    }
+}
+
+/* High DPI Screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .calender {
+        border: 0.5px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .days div {
+        border: 0.5px solid transparent;
+    }
+}
